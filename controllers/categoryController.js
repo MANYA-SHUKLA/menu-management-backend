@@ -7,7 +7,7 @@ const createCategory = async (req, res) => {
     try {
         const { name, image, description, taxApplicability, tax, taxType } = req.body;
 
-        // Check if category already exists
+        
         const existingCategory = await Category.findOne({ name });
         if (existingCategory) {
             return res.status(400).json({
@@ -16,7 +16,6 @@ const createCategory = async (req, res) => {
             });
         }
 
-        // Create new category
         const category = new Category({
             name,
             image,
